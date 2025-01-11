@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Express Application - User Authentication, Session Management, and Validation</title>
 </head>
 <body>
     <h1>Express Application - User Authentication, Session Management, and Validation</h1>
