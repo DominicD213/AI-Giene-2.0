@@ -18,8 +18,7 @@
         This provides flexibility for including other variables that might be needed by different parts of the application. By using this schema, 
         the application ensures that all required environment variables are present and properly configured before starting. 
         The <code>envVarSchema</code> is then exported to be used in other parts of the application where environment variable validation is needed.
-    </p>
-
+    </p><br>
     <h1>Login Validation</h1>
     <p>
         The provided code defines a <code>loginValidation</code> function that uses the <code>validator</code> library to validate and sanitize user input 
@@ -34,8 +33,7 @@
         the username is sanitized using <code>validator.escape</code> to remove any potentially malicious characters, while the password is left unchanged for security reasons. 
         The function then returns an object indicating whether the input is valid, along with the sanitized data if the validation passes. If any validation fails, 
         the appropriate error message is provided.
-    </p>
-
+    </p><br>
     <h1>OpenAI Response Validation</h1>
     <p>
         The provided code defines a <code>sanitizedRequest</code> function that uses the <code>validator</code> library to sanitize and validate a query parameter in 
@@ -48,8 +46,7 @@
         This sanitization process ensures that any special characters or HTML entities are converted into a safe form, preventing issues such as Cross-Site Scripting (XSS). 
         After sanitization, the function returns an object with the sanitized query, ready for further processing in the application. The function is exported for use 
         in other parts of the application where query validation and sanitization are necessary.
-    </p>
-
+    </p><br>
     <h1>Sign Up Validation</h1>
     <p>
         This HTML document provides a detailed explanation of the code that sets up user authentication and session management routes in an Express application. 
@@ -58,8 +55,7 @@
         which manage the session state, handle OpenAI responses, and retrieve the user's query history. It also explains how the <code>uploadRoute</code> handles file 
         uploads and requires both authentication and file upload middleware. The session-related routes are organized under a sub-router for better modularity, and the 
         <code>createRouter</code> function is exported for use in other parts of the application.
-    </p>
-
+    </p><br>
     <h1>Upload Route Validation</h1>
     <p>
         The code provided defines a validation function, <code>validatedUpload</code>, which checks the type of a file and sanitizes its filename. First, the function 

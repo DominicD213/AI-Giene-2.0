@@ -21,8 +21,7 @@
         If there is an issue with applying the CORS settings, the error is caught, logged, and a 400 status response is sent back 
         indicating a "CORS Options Issue." The middleware function is exported to be used in other parts of the application to ensure 
         consistent CORS handling across routes.
-    </p>
-
+    </p><br>
     <h1>File Upload Middleware</h1>
     <p>
         This code configures a file upload middleware using the <code>multer</code> package, which is designed for handling multipart 
@@ -37,8 +36,7 @@
         <code>multer</code> package to handle the file upload, applying the defined storage, file size limit, and file type validation 
         rules. If the file is valid, it proceeds with the upload; otherwise, an error message will be generated. This middleware is typically 
         used in routes that handle file uploads, ensuring files are validated and processed properly before being saved or further handled.
-    </p>
-
+    </p><br>
     <h1>Session Middleware</h1>
     <p>
         This code sets up an Express session middleware with MongoDB as the session store, using the <code>express-session</code> 
