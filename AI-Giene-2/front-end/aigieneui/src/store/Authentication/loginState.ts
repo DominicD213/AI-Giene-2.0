@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface loginSlice {
+interface login {
     value: boolean
 }
 
-const initialState: loginSlice = {
+const initialState: login = {
     value: false,
 };
 

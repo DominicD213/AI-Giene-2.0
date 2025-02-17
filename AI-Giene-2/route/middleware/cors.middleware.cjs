@@ -1,5 +1,5 @@
 const cors = require('cors');
-const {origin} = require('../configs/config.cjs')
+const { origin } = require('../configs/config.cjs');
 
 const corsMiddlewareFunction = (req, res, next) => {
     try {
@@ -12,9 +12,7 @@ const corsMiddlewareFunction = (req, res, next) => {
         };
 
         // Apply CORS middleware
-        const corsMiddleware = cors(corsOptions);
-        corsMiddleware(req, res, next); // Invoke the CORS middleware
-        return corsMiddleware;
+        cors(corsOptions)(req, res, next);
     } catch (error) {
         console.error('CORS Middleware Error:', error);
         res.status(400).send('CORS Options Issue');

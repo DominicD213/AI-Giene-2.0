@@ -8,6 +8,9 @@ import signUpCredentialSlice from './Authentication/singUpCredentails';
 import userImageSlice from './Authentication/userImage';
 import searhSlice from './searchbar/search';
 import sessionStatusSlice from './session/sessionStatus';
+import userImagePreviewSlice from './Authentication/userImagePreview';
+import LoginButtonSlice from './Authentication/loginButton'
+import errorSlice from './Authentication/authError';
 
 export const store = configureStore({
     reducer: {
@@ -20,8 +23,11 @@ export const store = configureStore({
         userImage: userImageSlice, 
         search: searhSlice,
         session: sessionStatusSlice,
+        userImagePreview: userImagePreviewSlice,
+        loginButton: LoginButtonSlice,
+        error: errorSlice,
     }
-})
+}) 
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

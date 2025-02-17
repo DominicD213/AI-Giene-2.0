@@ -1,4 +1,4 @@
-const logout =  (async(res,req) => {
+const logout = async (req, res) => {
     req.session.destroy((err) => {
         if (err) {
             return res.status(500).send('Error logging out');
@@ -6,6 +6,6 @@ const logout =  (async(res,req) => {
         res.clearCookie('connect.sid');
         return res.status(200).send('Logout successful');
     });
-})
+};
 
 module.exports = logout;

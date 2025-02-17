@@ -1,11 +1,13 @@
 import {createSlice } from '@reduxjs/toolkit';
 
 interface loginUser {
-    username: string;
+    user: string;
+    loginPassword: string;
+    sessionActive: boolean;
 }
 
-const initialState = {
-    user: null as loginUser | null,
+const initialState: loginUser = {
+    user: "",
     loginPassword: '',
     sessionActive: false,
 };

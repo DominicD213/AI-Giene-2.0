@@ -1,10 +1,10 @@
 import { createSlice} from "@reduxjs/toolkit";
 
-interface singUpSlice {
+interface singUp {
     value: boolean
 }
 
-const initialState: singUpSlice = {
+const initialState: singUp = {
     value: false,
 };
 
@@ -12,11 +12,11 @@ const singUpSlice = createSlice({
     name: "SingUp",
     initialState,
     reducers: {
-        toggleSingUp: (state) => {
+        toggleSignUp: (state) => {
             state.value = !state.value;
         },
     },
 });
 
-export const { toggleSingUp } = singUpSlice.actions;
+export const { toggleSignUp } = singUpSlice.actions;
 export default singUpSlice.reducer;

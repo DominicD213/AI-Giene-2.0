@@ -10,33 +10,37 @@ const openAIResponse = (io) => {
 
         try {
             const query = req.body.query;
+            const validatedQuery = sanitizedRequest(query, res); // Validate the query
 
-            // Validate and sanitize the query
-            const validatedQuery = sanitizedRequest(query);
+            if (validatedQuery.error) {
+                return res.status(400).send(validatedQuery.error); // Return error if validation fails
+            }
+            
             const { query: sanitizedQuery } = validatedQuery;
 
-            // Communicate with OpenAI
+            // Communicate with OpenAI API
             const response = await converseWithChatGPT(sanitizedQuery);
 
             // Save the query and response to the database
             const userId = req.session.user.id;
             const newRequest = new Giene.UserQueries({
                 user: userId,
-                query: query,
+                query:query,
                 response: response,
             });
             await newRequest.save();
 
-            // Emit the query and response via WebSocket
-            io.emit('newQuery', { query, response });
+            // Emit the query and response to the specific socket (pass socket here)
+            io.emit('newQuery', { query: sanitizedQuery, response });
+            console.log({query: sanitizedQuery, response})
 
             // Send the response back to the client
             return res.status(200).json({ response });
         } catch (error) {
-            console.error('OpenAI API error:', error);
-            return res.status(500).send('Error communicating with OpenAI API');
+            console.error('Error:', error);
+            return res.status(500).send('Error processing your request');
         }
     };
 };
 
-module.exports = openAIResponse
+module.exports = openAIResponse;

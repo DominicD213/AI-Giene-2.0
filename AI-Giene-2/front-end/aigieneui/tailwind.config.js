@@ -22,23 +22,28 @@ module.exports = {
           '0%': { opacity: '0', transform: 'translateX(-200px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' },
         },
-        fadeLeft:{
-          '0%': {
-              opacity: '0',
-              transform: 'translateX(200px)'
-          },
-          '100%': {
-              opacity: '1',
-              transform: 'translateX(0)'
-          }
-        // Add more keyframes as needed
+        fadeLeft: {
+          '0%': { opacity: '0', transform: 'translateX(200px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        }
       },
       animation: {
         'fade-right': 'fadeRight 0.6s ease-out',
-        'fade-left': 'fadeleft 0.6s ease-out',
-        // Define animations that use your custom keyframes
-      },
+        'fade-left': 'fadeLeft 0.6s ease-out',
+      }
     },
   },
-  plugins: [],
-}};
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          '-ms-overflow-style': 'none',  // IE & Edge
+          'scrollbar-width': 'none',  // Firefox
+        },
+        '.scrollbar-hide::-webkit-scrollbar': {
+          display: 'none',  // Chrome, Safari, Opera
+        },
+      });
+    }
+  ],
+};

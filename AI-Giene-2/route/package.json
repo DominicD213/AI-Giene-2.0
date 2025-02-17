@@ -3,18 +3,23 @@
   "version": "1.0.0",
   "main": "index.cjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-modules index.cjs",
+    "dev": "nodemon --experimental-modules index.cjs",
+    "build": "babel index.mjs --out-dir dist --extensions '.cjs,.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "connect-mongo": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.3",
     "multer": "^1.4.5-lts.1",
     "openai": "^4.78.0",

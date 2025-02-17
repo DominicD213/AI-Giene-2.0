@@ -7,6 +7,7 @@ const sessionMiddleware = require('./middleware/session.middleware.cjs');
 const corsMiddleWare = require('./middleware/cors.middleware.cjs');
 const fileUploadMiddleware = require('./middleware/fileUpload.middleware.cjs');
 const {envPort, dbURI,origin} = require('./configs/config.cjs')
+const path = require('path');
 
 require('dotenv').config()
 
@@ -19,11 +20,13 @@ const app = express();
 const server = http.createServer(app);
 
 const initSocket = require('./socket/socket.config.cjs');
-const io = initSocket;
+const io = initSocket(server);
 
+
+app.use(express.json()); 
 app.use(sessionMiddleware);
 app.use(corsMiddleWare);
-app.use(fileUploadMiddleware);
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // Parse JSON and URL-encoded data
 app.use(bodyParser.json());
@@ -35,15 +38,21 @@ const routes = require('./routes/routes.cjs')(io, fileUploadMiddleware);
 app.use('/', routes);
 
 // Connect to MongoDB
-mongoose.connect(dbURI)
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((conn) => {
         console.log('DB Connected');
+        
+        // Initialize GridFS after a successful connection
         global.gfs = new GridFSBucket(conn.connection.db, {
-            bucketName: 'images'
+            bucketName: 'uploads'
         });
+        global.gfs = gfs;
         console.log('MongoDB connected and GridFS initialized');
     })
-    .catch((err) => console.error(`DB Connection Error: ${err}`));
+    .catch((err) => {
+        console.error(`DB Connection Error: ${err}`);
+        process.exit(1);  // Exit process if connection fails
+    });
 
 mongoose.connection.on('connected', () => console.log('Mongoose connected to DB'));
 mongoose.connection.on('error', (err) => console.log(`Mongoose connection error: ${err}`));

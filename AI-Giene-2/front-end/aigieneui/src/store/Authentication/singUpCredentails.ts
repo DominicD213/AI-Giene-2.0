@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface signUpCredentialSlice {
+interface signUpCredential {
     email: string;
     password: string;
     username: string;
 }
 
-const initialState: signUpCredentialSlice = {
+const initialState: signUpCredential = {
     email: '',
     password: '',
     username: '',
