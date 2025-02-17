@@ -1,23 +1,35 @@
-const converseWithChatGPT = require('../controller/controller.converseWithChatGPT.cjs')
+const openAIResponse = require('../controller/controller.openAIResponse.cjs');
+
 module.exports = (io) => {
     io.on('connection', (socket) => {
-        console.log('A user connected:', socket.id); // Log new client connection
+        // console.log('A user connected:', socket.id);
 
-        // Listen for 'sendMessage' event from the client
-        socket.on('newQuery', async (request) => {
-            console.log('Received a new message:', request); // Log the data received from the client
+        // Listen for 'newQuery' event
+        socket.on('newQuery', async (query, userId) => {
+            // console.log('Received new message:', query, userId);
 
-            // Now interact with OpenAI API or any other processing logic here
-            const response = await converseWithChatGPT(request);  // Assume converseWithChatGPT is your API call function
+            try {
+                // Call openAIResponse (pass the query and userId directly)
+                const responseData = await openAIResponse(query, userId);
+                
+                // Check for error in the response
+                if (responseData.error) {
+                    socket.emit('Error', { message: responseData.error });
+                    return;
+                }
 
-            // Emit the response back to the same socket
-            socket.emit('Updated-Data', { data: request, response });
-            console.log(`Returning Data: ${request}, Response: ${response}`);
+                // Emit the response back to the same socket
+                socket.emit('Updated-Data', { data: responseData.query, response: responseData.response });
+                // console.log(`Returning Data: ${responseData.query}, Response: ${responseData.response}`);
+            } catch (error) {
+                console.error('Error processing query:', error);
+                socket.emit('Error', { message: 'Error processing your request' });
+            }
         });
 
         // Handle client disconnect event
         socket.on('disconnect', () => {
-            console.log('A user disconnected:', socket.id); // Log when a client disconnects
+            // console.log('A user disconnected:', socket.id);
         });
     });
 };

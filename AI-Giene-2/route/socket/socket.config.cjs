@@ -15,7 +15,7 @@ const initSocket = (server) => {
     require('./socketHandlers.cjs')(io);
 
     // Log when socket server is created
-    console.log('Socket Created');
+    //console.log('Socket Created');
     
     return io;
 };

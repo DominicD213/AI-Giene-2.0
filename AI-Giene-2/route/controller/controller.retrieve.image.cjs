@@ -11,7 +11,7 @@ const streamImageFromGridfs = async (imageUrl) => {
             imageId = imageUrl;  // Assumed to be the image ID directly
         }
 
-        //console.log("Extracted Image ID:", imageId);
+        // console.log("Extracted Image ID:", imageId);
 
         // Ensure the imageId is valid (in case it's an ObjectId)
         if (!mongoose.Types.ObjectId.isValid(imageId)) {
@@ -53,7 +53,7 @@ const streamImageFromGridfs = async (imageUrl) => {
             });
         });
     } catch (error) {
-        console.error("Error retrieving image:", error);
+        // console.error("Error retrieving image:", error);
         throw new Error("Error retrieving image: " + error.message);
     }
 };

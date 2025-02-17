@@ -5,8 +5,8 @@ require('dotenv').config();
 // Login route
 const login = async (req, res) => {
     const { username, password } = req.body;
-    console.log('Login Request Body:', req.body);
-    console.log('Before login session:', req.session);
+    // console.log('Login Request Body:', req.body);
+    // console.log('Before login session:', req.session);
 
     try {
         // Validate login input
@@ -29,7 +29,7 @@ const login = async (req, res) => {
         // Use the comparePassword method to check if the passwords match
         const isPasswordValid = await user.comparePassword(sanitizedPassword);
         if (!isPasswordValid) {
-            console.log("Invalid password attempt.");
+            //console.log("Invalid password attempt.");
             return res.status(401).json({ message: "Invalid password" });
         }
 

@@ -7,7 +7,7 @@ const { dbURI } = require('../configs/config.cjs');
 const secretKey = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex'); // Use an environment variable for better security
 
 const mongoUrl = dbURI;
-console.log('Mongo URL:', mongoUrl);
+// console.log('Mongo URL:', mongoUrl);
 
 // Configure session middleware
 const sessionMiddleware = session({
@@ -17,7 +17,7 @@ const sessionMiddleware = session({
     store: MongoStore.create({
         mongoUrl: mongoUrl, // MongoDB connection URI for storing sessions
         collectionName: 'sessions',
-        ttl: 14 * 24 * 60 * 60 // Session TTL (14 days)
+        maxAge: 86400000,
     }),
     cookie: {
         secure: process.env.NODE_ENV === 'production', // Use HTTPS in production

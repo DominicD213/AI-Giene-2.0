@@ -1,7 +1,7 @@
 const streamImageFromGridfs = require("./controller.retrieve.image.cjs");
 
 const sessionStatus = async (req, res) => {
-  console.log('Session status route accessed');
+  // console.log('Session status route accessed');
 
   if (req.session && req.session.user) {
       const userImage = req.session.user.userImage;
@@ -12,6 +12,7 @@ const sessionStatus = async (req, res) => {
           active: true,
           user: req.session.user,
           userImage: null, // Will be filled with base64 image if available
+          id: req.session.user.id
       };
 
       // Check if the userImage is already a base64 string

@@ -1,9 +1,9 @@
 const validator = require('validator');
 
 const signUpValidation = (username, password,email) => {
-    console.log("Username to validate", username)
-    console.log("Email to validate:", email); 
-    console.log("Password to validate:", password);
+    // console.log("Username to validate", username)
+    // console.log("Email to validate:", email); 
+    // console.log("Password to validate:", password);
     // Validate username
     if (!validator.isAlphanumeric(username)) {
         return { isValid: false, message: "Username must be alphanumeric." };

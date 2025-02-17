@@ -7,7 +7,7 @@ const deletingOldUserImages = async (oldImageID) => {
         try {
             const objectId = mongoose.Types.ObjectId.createFromTime(oldImageID);
             await bucket.delete(objectId); // Delete the old image from GridFS
-            console.log(`Successfully deleted old image with ID: ${oldImageID}`);
+            //console.log(`Successfully deleted old image with ID: ${oldImageID}`);
         } catch (error) {
             console.error('Error deleting old image:', error);
         }

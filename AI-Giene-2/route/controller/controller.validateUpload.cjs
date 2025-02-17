@@ -4,7 +4,7 @@ const validatedUpload = require("../validation/uploadRoute.validation.cjs");
 const fs = require('fs')
 
 const uploadRoute = async (req, res) => {
-    console.log('Received request for file upload');
+    // console.log('Received request for file upload');
 
     if (!req.session.user) {
         console.error('User not authenticated');
@@ -16,7 +16,7 @@ const uploadRoute = async (req, res) => {
         return res.status(400).send('No file uploaded');
     }
 
-    console.log('Received file:', req.file);
+    // console.log('Received file:', req.file);
 
     if (!global.gfs) {
         console.error('GridFS not initialized');
@@ -25,7 +25,7 @@ const uploadRoute = async (req, res) => {
 
     try {
         const validatedFile = validatedUpload(req.file);
-        console.log('Validated file:', validatedFile);
+        // console.log('Validated file:', validatedFile);
 
         if (!validatedFile || !validatedFile.sanitizeFileName) {
             console.error('Invalid file type. Only JPG, PNG, PDF, JPEG are allowed.');
@@ -33,7 +33,7 @@ const uploadRoute = async (req, res) => {
         }
 
         const filePath = req.file.path;
-        console.log('File path:', filePath);
+        // console.log('File path:', filePath);
 
         if (!fs.existsSync(filePath)) {
             console.error('File does not exist at path:', filePath);
@@ -49,7 +49,7 @@ const uploadRoute = async (req, res) => {
         fileStream.pipe(stream);
 
         stream.on('finish', async () => {
-            console.log('Upload finished.');
+            // console.log('Upload finished.');
 
             // Retrieve the uploaded file details manually
             const uploadedFile = await global.gfs.find({ filename: validatedFile.sanitizeFileName }).toArray();
@@ -60,7 +60,7 @@ const uploadRoute = async (req, res) => {
             }
 
             const fileId = uploadedFile[0]._id;
-            console.log('File successfully uploaded with ID:', fileId);
+            // console.log('File successfully uploaded with ID:', fileId);
 
             try {
                 const userId = req.session.user.id;
@@ -90,18 +90,18 @@ const uploadRoute = async (req, res) => {
 
                 return res.status(201).json({ fileId });
             } catch (error) {
-                console.error('Error updating user:', error);
+                // console.error('Error updating user:', error);
                 return res.status(500).send('Error updating user');
             }
         });
 
         stream.on('error', (err) => {
-            console.error('Error uploading file:', err);
+            // console.error('Error uploading file:', err);
             return res.status(500).send('Error uploading file');
         });
 
     } catch (error) {
-        console.error('Error in file upload handling:', error);
+        // console.error('Error in file upload handling:', error);
         return res.status(500).send('Error in file upload handling');
     }
 };

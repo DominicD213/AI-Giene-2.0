@@ -4,10 +4,10 @@ const Giene = require("../models/schema.cjs");
 // Signup function
 const signup = async (req, res) => {
     const { username, password, email } = req.body;
-    console.log('Received body:', req.body);
+    // console.log('Received body:', req.body);
 
     const validatedResults = signUpValidation(username, password, email);
-    console.log('Validation Results:', validatedResults);
+    // console.log('Validation Results:', validatedResults);
 
     // If validation fails, send the validation error message
     if (!validatedResults.isValid) {

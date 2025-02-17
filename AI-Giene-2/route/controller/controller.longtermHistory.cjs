@@ -5,7 +5,7 @@ const longtermHistory = async (req, res) => {
     if (!req.session.user) {
         return res.status(401).send('Unauthorized');
     }
-    console.log("User:", req.session?.user);
+    // console.log("User:", req.session?.user);
 
     try {
         const userId = req.session.user.id;
@@ -20,7 +20,7 @@ const longtermHistory = async (req, res) => {
             .select('query response')
             .sort({ createdAt: 1 });
 
-        console.log("API Response:", userSearch); // Debugging
+        // console.log("API Response:", userSearch); // Debugging
 
         return res.status(200).json(userSearch);
     } catch (error) {

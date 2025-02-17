@@ -18,5 +18,5 @@ const corsMiddlewareFunction = (req, res, next) => {
         res.status(400).send('CORS Options Issue');
     }
 };
-
+ 
 module.exports = corsMiddlewareFunction;
