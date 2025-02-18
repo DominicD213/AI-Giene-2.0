@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser, setSessionActive } from "../../store/Authentication/loginCredentials";
+import { setUser, setSessionActive,setId } from "../../store/Authentication/loginCredentials";
 import { setUserImage, toggleUserImage } from "../../store/Authentication/userImage";
 import IconPerson from "../../Assets/personPlaceHolder.png";
 import linkSessionStatusApi from "../../services/sessionStatusApi";
@@ -18,24 +18,25 @@ const useCheckSessionStatus = () => {
 
   const checkSessionStatus = useCallback(async () => {
     try {
-      console.log("Fetching session status...");
+      // console.log("Fetching session status...");
       const { sessionStatusApi } = linkSessionStatusApi();
       const response = await sessionStatusApi();
 
-      console.log("Session status data:", response.data);
+      // console.log("Session status data:", response.data);
 
       if (response.data && response.data.active) {
         // Only update session state if it actually changed
         if (prevSessionState.current !== true) {
-          console.log("Dispatching setSessionActive: true");
+          // console.log("Dispatching setSessionActive: true");
           dispatch(setSessionActive(true));
           prevSessionState.current = true;
         }
 
         // Only update user state if it changed
         if (prevUserState.current !== response.data.user.username) {
-          console.log("Dispatching setUser:", response.data.user.username);
+          // console.log("Dispatching setUser:", response.data.user.username);
           dispatch(setUser(response.data.user.username));
+          dispatch(setId(response.data.user.id));
           prevUserState.current = response.data.user.username;
         }
 

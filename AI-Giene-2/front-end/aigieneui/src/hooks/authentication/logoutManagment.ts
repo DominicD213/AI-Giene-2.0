@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setUser, setSessionActive } from '../../store/Authentication/loginCredentials';
+import { setUser, setSessionActive,setId } from '../../store/Authentication/loginCredentials';
 import { setUserImage, toggleUserImage } from '../../store/Authentication/userImage';
 import logoutAPI from '../../services/logoutApi';
 import { clearRequest, changeloadingState } from "../../store/session/sessionStatus";
@@ -23,6 +23,8 @@ const useHandleLogout = () => {
                 dispatch(toggleUserImage());
                 dispatch(clearRequest()); // Clear queries
                 dispatch(changeloadingState()); // Reset loading state
+                dispatch(setId('')); // Clear user ID
+                
             } else {
                 console.error('Logout failed');
             }

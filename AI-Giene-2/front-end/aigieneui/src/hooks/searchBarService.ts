@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { updateSearch, startLoading, stopLoading } from "../store/searchbar/search";
-import openAIQuery from '../services/openAIApi'; // Import the API function
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
@@ -9,6 +8,7 @@ import useSocketAPI from '../services/socketAPI'; // Import the socket service
 const useSearchBar = () => {
     const dispatch = useDispatch();
     const search = useSelector((state: RootState) => state.search.search);
+    const userId = useSelector((state: RootState) => state.login.id);
     const [input, setInput] = useState(""); // Local state for input field
     const socket = useSocketAPI(); // Get the socket instance
 
@@ -21,9 +21,9 @@ const useSearchBar = () => {
     useEffect(() => {
         if (socket && search.trim()) {
             // Emit socket event when search is updated
-            socket.emit('newQuery', search);
+            socket.emit('newQuery', search, userId);
         }
-    }, [search, socket]); // Only run this effect when `search` changes and socket is initialized
+    }, [search, socket, userId]); // Only run this effect when `search` changes and socket is initialized
 
     // Handles search submission
     const handleSearchClick = async (searchTerm: string) => {
@@ -35,19 +35,7 @@ const useSearchBar = () => {
         try {
             console.log('Search term:', searchTerm);
             dispatch(updateSearch(searchTerm)); // Dispatch search term on submit
-            dispatch(startLoading());
-
-            const response = await openAIQuery(searchTerm); // Make API request
-
-            // Only call the socket event if the response is valid
-            if (response) {
-                console.log('API Response:', response);
-                // Optionally, you can dispatch the response to Redux here if needed.
-            } else {
-                console.error('No response from API');
-            }
-
-            return response;
+            dispatch(startLoading())
         } catch (error) {
             console.error('Error making API request:', error);
         } finally {
