@@ -1,5 +1,5 @@
-import { setSessionActive } from '../../store/Authentication/loginCredentials';
-import useSessionStatusApi from '../../services/sessionStatusApi';
+import { setSessionActive } from '../../../store/Authentication/loginCredentials';
+import useSessionStatusApi from '../../../services/queryServices/sessionStatusService/sessionStatusApi';
 import { useDispatch } from 'react-redux';
 const useCheckSessionStatus = () => {
     const dispatch = useDispatch();

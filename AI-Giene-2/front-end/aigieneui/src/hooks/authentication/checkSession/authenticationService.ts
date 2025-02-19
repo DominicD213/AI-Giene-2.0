@@ -1,10 +1,10 @@
 import { useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser, setSessionActive,setId } from "../../store/Authentication/loginCredentials";
-import { setUserImage, toggleUserImage } from "../../store/Authentication/userImage";
-import IconPerson from "../../Assets/personPlaceHolder.png";
-import linkSessionStatusApi from "../../services/sessionStatusApi";
-import { RootState } from "../../store/store";
+import { setUser, setSessionActive,setId } from "../../../store/Authentication/loginCredentials";
+import { setUserImage, toggleUserImage } from "../../../store/Authentication/userImage";
+import IconPerson from "../../../Assets/personPlaceHolder.png";
+import linkSessionStatusApi from "../../../services/queryServices/sessionStatusService/sessionStatusApi";
+import { RootState } from "../../../store/store";
 
 const useCheckSessionStatus = () => {
   const dispatch = useDispatch();

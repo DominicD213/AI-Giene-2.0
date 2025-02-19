@@ -36,11 +36,11 @@ const fileUploadMiddleware = multer({
         const mimetype = filetypes.test(file.mimetype);
         const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 
-        console.log('Mimetype:', file.mimetype);
-        console.log('Extension:', path.extname(file.originalname).toLowerCase());
+        // console.log('Mimetype:', file.mimetype);
+        // console.log('Extension:', path.extname(file.originalname).toLowerCase());
 
         if (mimetype && extname) {
-            console.log('File type is valid:', file.originalname);
+            // console.log('File type is valid:', file.originalname);
             return cb(null, true);
         }
 

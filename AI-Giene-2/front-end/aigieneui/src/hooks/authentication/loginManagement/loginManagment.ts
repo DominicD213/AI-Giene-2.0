@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
-import { setLoading } from "../../store/Authentication/loginButton";
-import { setUserImage } from "../../store/Authentication/userImage";
-import { toggleLogin } from "../../store/Authentication/loginState";
-import { setError } from "../../store/Authentication/authError";
+import { setLoading } from "../../../store/Authentication/loginButton";
+import { setUserImage } from "../../../store/Authentication/userImage";
+import { toggleLogin } from "../../../store/Authentication/loginState";
+import { setError } from "../../../store/Authentication/authError";
 import { AxiosError } from "axios";
-import useLoginAPI from "../../services/loginApi";
-import useCheckSessionStatus from "./authenticationService";
+import useLoginAPI from "../../../services/AuthAPI/login/loginApi";
+import useCheckSessionStatus from "../checkSession/authenticationService";
 
 const useLogin = () => {
     const dispatch = useDispatch();

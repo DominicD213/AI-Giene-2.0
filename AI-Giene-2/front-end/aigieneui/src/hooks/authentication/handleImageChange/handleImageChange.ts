@@ -1,6 +1,6 @@
-import { setUserImage } from "../../store/Authentication/userImage";
-import { setImagePreview } from "../../store/Authentication/userImagePreview";
-import useHandleImageUpload from "./imageUpload";
+import { setUserImage } from "../../../store/Authentication/userImage";
+import { setImagePreview } from "../../../store/Authentication/userImagePreview";
+import useHandleImageUpload from "../handleImageUpload/imageUpload";
 import { useDispatch } from "react-redux";
 
 const useHandleImageChanges = () => {

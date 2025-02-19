@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store/store";
 import { toggleLogin } from "../../../store/Authentication/loginState";
-import useLogin from "../../../hooks/authentication/loginManagment";
+import useLogin from "../../../hooks/authentication/loginManagement/loginManagment";
 import { setUser, setLoginPassword } from "../../../store/Authentication/loginCredentials";
 import { setError } from "../../../store/Authentication/authError";
 

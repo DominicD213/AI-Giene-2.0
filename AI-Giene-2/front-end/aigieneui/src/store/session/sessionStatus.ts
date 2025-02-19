@@ -71,5 +71,5 @@ const sessionStatusSlice = createSlice({
 });
 
 // Export the actions and reducer
-export const { addRequest, setError, startLoading, stopLoading, changeloadingState, clearRequest } = sessionStatusSlice.actions;
+export const { addRequest, setError, startLoading, stopLoading, clearRequest } = sessionStatusSlice.actions;
 export default sessionStatusSlice.reducer;

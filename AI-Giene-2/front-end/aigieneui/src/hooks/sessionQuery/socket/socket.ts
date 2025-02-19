@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import useSocketAPI from "../../services/socketAPI"; 
+import useSocketAPI from "../../../services/utils/socketService/socketAPI"; 
 import { useDispatch, useSelector } from "react-redux"; 
-import { addRequest } from "../../store/session/sessionStatus";
-import { RootState } from "../../store/store";
+import { addRequest } from "../../../store/session/sessionStatus";
+import { RootState } from "../../../store/store";
+import { stopLoading } from "../../../store/searchbar/search";
 
 const useSocketEvents = (event: string) => {
     const dispatch = useDispatch();
@@ -35,8 +36,10 @@ const useSocketEvents = (event: string) => {
             console.log(`Socket connected. Listening for event: ${event}`);
             socket.off(event); // Remove old listeners
             socket.on(event, (data) => {
+                dispatch(stopLoading());
                 console.log(`Received event: ${event}`, data);
                 if (data?.response) {
+
                     console.log(`Response: ${data.response}`);
                     dispatch(addRequest([
                         {

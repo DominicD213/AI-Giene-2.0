@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../store/store";
-import { addQuery } from "../store/history/querySlice";
-import useHistoryServiceApi from "../services/historyServiceApi";
+import { RootState } from "../../store/store";
+import { addQuery } from "../../store/history/querySlice";
+import useHistoryServiceApi from "../../services/queryServices/historyService/historyServiceApi";
 
 const useFetchQueriesHistory = () => {
     const searchHistory = useSelector((state: RootState) => state.searchHistory.value);

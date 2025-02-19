@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { useSelector, useDispatch} from "react-redux";
-import { RootState } from "../store/store";
-import { setError } from "../store/Authentication/authError";
+import { RootState } from "../../../store/store";
+import { setError } from "../../../store/Authentication/authError";
 
 // Custom hook to interact with the signup API
 const useSignUpApi = () => {

@@ -1,9 +1,9 @@
 // useSignUp.ts (Custom hook for sign-up logic)
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import { setError } from '../../store/Authentication/authError';
-import { toggleSignUp } from '../../store/Authentication/singUpState';
-import useSignUpApi from '../../services/signUpApi';  // Import the API hook
+import { RootState } from '../../../store/store';
+import { setError } from '../../../store/Authentication/authError';
+import { toggleSignUp } from '../../../store/Authentication/singUpState';
+import useSignUpApi from '../../../services/AuthAPI/signUp/signUpApi';  // Import the API hook
 
 const useSignUp = () => {
     const dispatch = useDispatch();

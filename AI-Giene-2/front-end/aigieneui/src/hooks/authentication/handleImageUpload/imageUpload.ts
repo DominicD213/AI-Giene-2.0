@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { setImagePreview } from '../../store/Authentication/userImagePreview';
-import imageUploadAPI from "../../services/imageUploadAPI";
+import { RootState } from "../../../store/store";
+import { setImagePreview } from '../../../store/Authentication/userImagePreview';
+import imageUploadAPI from "../../../services/imageHandling/imageUploadAPI";
 
 const useHandleImageUpload = () => {
 

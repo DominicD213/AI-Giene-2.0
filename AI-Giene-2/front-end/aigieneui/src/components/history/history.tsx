@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import Search from "../../Assets/whiteSearchIcon.png";
 import { setSearchHistory } from "../../store/history/searchHistorySlice";
-import useFetchQueriesHistory from "../../hooks/historyService";
+import useFetchQueriesHistory from "../../hooks/historyService/historyService";
 import { clearQuery } from "../../store/history/querySlice";
 
 const History: React.FC = () => {

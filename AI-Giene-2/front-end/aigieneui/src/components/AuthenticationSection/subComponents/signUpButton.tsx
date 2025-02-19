@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store/store";
 import { updateEmail, updatePassword, updateUsername } from "../../../store/Authentication/singUpCredentails";
 import { toggleSignUp } from "../../../store/Authentication/singUpState";
-import  useSignUp  from "../../../hooks/authentication/singnUpManagement";
+import  useSignUp  from "../../../hooks/authentication/handleSignUP/singnUpManagement";
 import { setError } from "../../../store/Authentication/authError";
 const SignUpButton = () => {
     const signUpState = useSelector((state: RootState) => state.signUpState.value);

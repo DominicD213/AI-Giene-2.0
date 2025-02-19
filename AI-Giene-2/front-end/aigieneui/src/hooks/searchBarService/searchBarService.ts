@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
-import { updateSearch, startLoading, stopLoading } from "../store/searchbar/search";
+import { updateSearch, startLoading, stopLoading } from "../../store/searchbar/search";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
-import useSocketAPI from '../services/socketAPI'; // Import the socket service
+import { RootState } from "../../store/store";
+import useSocketAPI from '../../services/utils/socketService/socketAPI'; // Import the socket service
 
 const useSearchBar = () => {
     const dispatch = useDispatch();

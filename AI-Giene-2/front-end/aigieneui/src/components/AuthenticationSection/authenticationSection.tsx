@@ -3,8 +3,8 @@ import { RootState } from "../../store/store";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleLogin } from "../../store/Authentication/loginState";
 import { toggleSignUp } from "../../store/Authentication/singUpState";
-import useHandleImageChanges from "../../hooks/authentication/handleImageChange";
-import  useHandleLogout  from "../../hooks/authentication/logoutManagment";
+import useHandleImageChanges from "../../hooks/authentication/handleImageChange/handleImageChange";
+import  useHandleLogout  from "../../hooks/authentication/handleLogout/logoutManagment";
 import SignUpButton from "./subComponents/signUpButton";
 import LoginButton from "./subComponents/loginButton";
 
@@ -28,8 +28,8 @@ const AuthenticationSection: React.FC = () =>{
         {!signUpState && !loginState && !sessionActive && (
           <>
             <div className="w-max m-auto rounded-2xl h-10 flex">
-              <button className="bg-custom-gradient rounded-lg px-4 w-20 max-lg:py-2 max-sm:w-[20vw]" onClick={() => dispatch(toggleLogin())}>Login</button>
-              <button className="bg-custom-gradient rounded-lg ml-2 px-4 w-20 max-lg:py-2 max-sm:w-[20vw]" onClick={() => dispatch(toggleSignUp())}>SignUp</button>
+              <button className="bg-custom-gradient rounded-lg px-4 w-20 max-lg:py-2 w-[6vw]" onClick={() => dispatch(toggleLogin())}>Login</button>
+              <button className="bg-custom-gradient rounded-lg ml-2 px-4 w-20 max-lg:py-2 w-[6vw]" onClick={() => dispatch(toggleSignUp())}>Sign Up</button>
             </div>
           </>
         )}

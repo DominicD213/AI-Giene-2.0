@@ -15,6 +15,7 @@ const sanitizedRequest = (query) => {
 
     // Escape the sanitized query to ensure it's safe for use
     const sanitizedQuery = validator.escape(queryWithoutSpaces);
+    console.log(sanitizedQuery);
 
     return { query: sanitizedQuery };
 };

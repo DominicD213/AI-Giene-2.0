@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import resetSocketConnection from './socketAPI';
+import resetSocketConnection from '../../utils/socketService/socketAPI';
 
 const logoutAPI = async (): Promise<AxiosResponse> => {
     const response = await axios.post(`${process.env.REACT_APP_API_URL}/logout`, {}, {
